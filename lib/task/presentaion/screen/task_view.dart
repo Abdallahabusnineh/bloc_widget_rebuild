@@ -21,6 +21,11 @@ class TaskView extends StatelessWidget {
                 gradient: LinearGradient(colors: [Colors.blue, Colors.purple]),
               ),
             ),
+            //***************************************** make bloc builder for update appbar depend on state and value ********************************************************
+            //?   BlocBuilder: The BlocBuilder is used here to rebuild the AppBar
+            //?   title whenever the state of the TaskManagementBloc changes.
+            //?   It checks if the state is TaskLoadingState (indicating that tasks are being loaded)
+            //?   and displays a loading message, otherwise, it shows the number of tasks.
             title: BlocBuilder<TaskManagementBloc, TaskManagementState>(
               builder: (context, state) {
                 var bloc = context.read<TaskManagementBloc>();
@@ -34,6 +39,11 @@ class TaskView extends StatelessWidget {
               },
             ),
             actions: [
+              // !!!!!!!!!!  use builder for create fresh context from BlocProvider to access bloc  !!!!!!!!!!
+              //?     Builder inside actions: The Builder widget is used within the actions of the AppBar to create a
+              //?     fresh context. This is important because, in some cases,
+              //?     you might not be able to directly access the Bloc in the actions without creating a fresh context using Builder.
+              //?     This allows you to trigger an event (like refreshing the tasks) without needing to pass the TaskManagementBloc explicitly.
               Builder(
                 builder:
                     (context) => IconButton(
@@ -48,7 +58,6 @@ class TaskView extends StatelessWidget {
             ],
           ),
           body: BlocListener<TaskManagementBloc, TaskManagementState>(
-            
             listener: (context, state) {
               if (state is TaskSuccessState) {
                 ScaffoldMessenger.of(context).showSnackBar(
