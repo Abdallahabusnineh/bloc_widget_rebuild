@@ -45,14 +45,12 @@ class ScreenTestBloc extends Bloc<ScreenTestEvent, ScreenTestState> {
     on<ScreenTestSetCategory3Event>(_onSetCategory3);
     on<ScreenTestIncrementEvent>(_onIncrement);
     on<ScreenTestToggleEvent>(_onToggle);
+    add(InitEvent());
   }
 
-  FutureOr<void> _onInit(
-    InitEvent event,
-    Emitter<ScreenTestState> emit,
-  ) async {
+  FutureOr<void> _onInit(InitEvent event, Emitter<ScreenTestState> emit) async {
     emit(ScreenTestLoadingState());
-
+    await Future.delayed(const Duration(seconds: 3));
     // Initialize with default category
     selectedCategory = 'All';
 
@@ -83,10 +81,12 @@ class ScreenTestBloc extends Bloc<ScreenTestEvent, ScreenTestState> {
     emit(ScreenTestCategory3ChangedState());
   }
 
-  FutureOr<void> _onIncrement(
+  Future<void> _onIncrement(
     ScreenTestIncrementEvent event,
     Emitter<ScreenTestState> emit,
-  ) {
+  ) async {
+    emit(ScreenTestLoadingIncrementState());
+    await Future.delayed(const Duration(seconds: 4));
     counter++;
     emit(ScreenTestIncrementState());
   }

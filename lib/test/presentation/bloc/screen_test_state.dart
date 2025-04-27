@@ -16,6 +16,7 @@ class ScreenTestCategory2ChangedState extends ScreenTestState {}
 class ScreenTestCategory3ChangedState extends ScreenTestState {}
 
 class ScreenTestIncrementState extends ScreenTestState {}
+class ScreenTestLoadingIncrementState extends ScreenTestState {}
 class ScreenTestToggleState extends ScreenTestState {}
 
 

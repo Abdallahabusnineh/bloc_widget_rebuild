@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_widget_rebuild/task/presentaion/screen/task_view.dart';
 import 'package:test_widget_rebuild/test/presentation/screen/test_with_context_watch_screen.dart';
 import 'package:test_widget_rebuild/test/presentation/screen/tset_with_blocbuilder_with_buildwhen_screen.dart';
 import 'package:test_widget_rebuild/test/presentation/screen/tset_with_blocbuilder_without_buildwhen_screen.dart';
@@ -72,6 +73,22 @@ class ScreenHome extends StatelessWidget {
                 );
               },
               child: const Text("Test With BlocBuilder without buildWhen"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TaskView()),
+                );
+              },
+              child: const Text("Task View"),
             ),
           ],
         ),

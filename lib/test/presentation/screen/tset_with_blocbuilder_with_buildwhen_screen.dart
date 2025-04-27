@@ -13,7 +13,10 @@ class TsetWithBlocBuilderWithBuildWhenScreen extends StatelessWidget {
       create: (_) => ScreenTestBloc(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Test With BlocBuilder with buildWhen',   style: TextStyle(fontSize: 15),),
+          title: const Text(
+            'Test With BlocBuilder with buildWhen',
+            style: TextStyle(fontSize: 15),
+          ),
         ),
         body: const TsetWithBlocBuilderWithBuildWhenContent(),
       ),
@@ -46,7 +49,6 @@ class TsetWithBlocBuilderWithBuildWhenContent extends StatelessWidget {
               ),
             ),
 
-            /// BUTTON
             RebuildCounter(
               label: "Button BlocBuilder",
               child: BlocBuilder<ScreenTestBloc, ScreenTestState>(

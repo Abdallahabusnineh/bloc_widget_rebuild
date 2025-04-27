@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Helper widget to track rebuild count
 class RebuildCounter extends StatefulWidget {
   final String label;
-  final Widget child; 
+  final Widget child;
 
   const RebuildCounter({super.key, required this.label, required this.child});
 
